@@ -1,3 +1,7 @@
+%define major 0
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname -d %{name}
+
 Name:       callaudiod
 Version:    0.1.1
 Release:    1
@@ -15,6 +19,8 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 
+Requires: %{libname}%{?_isa} = %{version}-%{release}
+
 
 %description
 callaudiod is a daemon for dealing with audio routing during phone calls.
@@ -24,12 +30,19 @@ switch audio profiles
 output audio to the speaker or back to its original port
 mute the microphone
 
-
-%package devel
-Summary: Development files for %{name}
+%package -n %{libname}
+Summary: Library for %{name}
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description -n %{libname}
+The lib%{name} package contains libraries for %{name}
+
+%package -n %{develname}
+Summary: Development files for %{name}
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: %{libname}%{?_isa} = %{version}-%{release}
+
+%description -n %{develname}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -47,12 +60,14 @@ developing applications that use %{name}.
 %files
 %{_bindir}/%{name}
 %{_bindir}/callaudiocli
-%dir %{_includedir}/libcallaudio-0.1
-%{_libdir}/libcallaudio-0.1.so.0
 %{_datadir}/dbus-1/interfaces/org.mobian_project.CallAudio.xml
 %{_datadir}/dbus-1/services/org.mobian_project.CallAudio.service
 
-%files devel
+%files -n %{libname}
+%{_libdir}/libcallaudio-0.1.so.%{major}
+
+%files -n %{develname}
+%dir %{_includedir}/libcallaudio-0.1
 %{_includedir}/libcallaudio-0.1/libcallaudio.h
 %{_libdir}/libcallaudio-0.1.so
 %{_libdir}/pkgconfig/libcallaudio-0.1.pc
