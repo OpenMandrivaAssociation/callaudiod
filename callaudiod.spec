@@ -1,14 +1,12 @@
 Name:       callaudiod
 Version:    0.1.1
-Release:    1%{?dist}
+Release:    1
 Summary:    Daemon for dealing with audio routing during phone calls
 
 License:        GPLv3+
 URL:            https://gitlab.com/mobian1/callaudiod
-Source0:        https://gitlab.com/mobian1/callaudiod/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://gitlab.com/mobian1/callaudiod/-/archive/%{version}/%{name}-%{version}.tar.bz2
 
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
 BuildRequires:  meson
 
 BuildRequires:  pkgconfig(alsa)
@@ -61,25 +59,3 @@ developing applications that use %{name}.
 
 %doc README.md
 %license COPYING
-
-%changelog
-* Thu Sep 16 2021 Torrey Sorensen <torbuntu@fedoraproject.org> - 0.1.1-1
-- Update to 0.1.1
-
-* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Thu Jan 28 2021 Torrey Sorensen <torbuntu@fedoraproject.org> - 0.1.0-1
-- Upgrade to 0.1.0
-
-* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Tue Jan 12 2021 Torrey Sorensen <torbuntu@fedoraproject.org> - 0.0.5-1
-- Update to 0.0.5
-
-* Thu Dec 17 2020 Torrey Sorensen <torbuntu@fedoraproject.org> - 0.0.4-2
-- Enabling debug
-
-* Wed Nov 04 2020 Torrey Sorensen <torbuntu@fedoraproject.org> - 0.0.4-1
-- Initial packaging
