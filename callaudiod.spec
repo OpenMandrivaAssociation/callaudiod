@@ -1,9 +1,9 @@
 %define major 0
-%define libname %mklibname %{name} %{major}
+%define libname %mklibname %{name}
 %define develname %mklibname -d %{name}
 
 Name:       callaudiod
-Version:    0.1.3
+Version:    0.1.4
 Release:    1
 Summary:    Daemon for dealing with audio routing during phone calls
 
@@ -47,15 +47,14 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
+%meson
 
 %build
-%meson
 %meson_build
 
 %install
 %meson_install
-
 
 %files
 %{_bindir}/%{name}
@@ -67,10 +66,8 @@ developing applications that use %{name}.
 %{_libdir}/libcallaudio-0.1.so.%{major}
 
 %files -n %{develname}
-%dir %{_includedir}/libcallaudio-0.1
-%{_includedir}/libcallaudio-0.1/libcallaudio.h
+%{_includedir}/libcallaudio-0.1
 %{_libdir}/libcallaudio-0.1.so
 %{_libdir}/pkgconfig/libcallaudio-0.1.pc
-
 %doc README.md
 %license COPYING
