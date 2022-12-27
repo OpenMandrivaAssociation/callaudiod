@@ -3,7 +3,7 @@
 %define develname %mklibname -d %{name}
 
 Name:       callaudiod
-Version:    0.1.4
+Version:    0.1.6
 Release:    1
 Summary:    Daemon for dealing with audio routing during phone calls
 
