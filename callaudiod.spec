@@ -4,7 +4,7 @@
 
 Name:       callaudiod
 Version:    0.1.6
-Release:    1
+Release:    2
 Summary:    Daemon for dealing with audio routing during phone calls
 
 License:        GPLv3+
